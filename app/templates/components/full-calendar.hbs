@@ -2,8 +2,12 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li><a href="#calendar" aria-controls="calendar" role="tab" data-toggle="tab">Calendar</a></li>
-    <li><a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a></li>
+    {{#if view.showFullCalendar}}
+    	<li><a href="#calendar" aria-controls="calendar" role="tab" data-toggle="tab">Calendar</a></li>
+    {{/if}}
+    {{#if view.showListCalendar}}
+    	<li><a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a></li>
+    {{/if}}
   </ul>
 
   <!-- Tab panes -->

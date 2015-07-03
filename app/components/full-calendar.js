@@ -4,7 +4,9 @@ export default Ember.Component.extend({
   store: null,
   modelName: null,
   controllerContent: null,
-
+  showFullCalendar: false,
+  showListCalendar: false,
+  
   didInsertElement: function(){
   	this.set('controllerContent', Ember.ArrayController.create({
   		content: null,
