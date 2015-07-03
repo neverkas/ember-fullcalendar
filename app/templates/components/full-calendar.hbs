@@ -1,1 +1,25 @@
-<div id='calendar'></div>
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li><a href="#calendar" aria-controls="calendar" role="tab" data-toggle="tab">Calendar</a></li>
+    <li><a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="list">
+		<div class="panel panel-default">
+		  <table class="table">
+    		{{list-filter list=controllerContent.content partial='cookies/list-item' properties='name'}}
+		  </table>
+		</div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane active" id="calendar">
+    	<div id='calendar'></div>
+    </div>
+  </div>
+
+</div>
+

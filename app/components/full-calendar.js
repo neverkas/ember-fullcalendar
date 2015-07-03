@@ -1,12 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   store: null,
   modelName: null,
-  showFullCallendar: false,
-  showCustomCalendar: false,
-  showListCalendar: false,
   controllerContent: null,
 
   didInsertElement: function(){
@@ -17,9 +13,9 @@ export default Ember.Component.extend({
     this.findModel(this.get('modelName'));
   },
 
-  findModel: function(model){
+  findModel: function(modelName){
   	var controller 	= this.get('controllerContent');
-  	var results = this.store.find(model);
+  	var results = this.store.find(modelName);
 	controller.set('content', results);
 
 	var _self = this;
@@ -29,13 +25,13 @@ export default Ember.Component.extend({
   	});
   },
 
-  list: function(){
-  	var data = this.get('controllerContent.content');
-  	//return this.parseData(data);
-  }.observes('controllerContent', 'controllerContent.content', 'controllerContent.content.@each'),
-
   parseData: function(data){
-  	return $.map(data, function(item){ return {title:item._data.name, date: item._data.date} })
+  	return $.map(data, function(item){
+  		return {
+  			title:item.get('label'),
+  			date: item.get('_data.date')
+  		}
+  	})
   },
 
   showCalendar: function(data){
@@ -43,7 +39,6 @@ export default Ember.Component.extend({
 
     $('#calendar').fullCalendar({
     	events: events,
-    	//events: this.get('list'),
     });
   }
 });
